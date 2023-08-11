@@ -95,30 +95,30 @@ export default {
           ><span> Photoshop &nbsp Illustrator &nbsp Figma</span>
         </div>
       </div>
-      <div class="home-education row-cols-sm-1 text-center my-3">
-        <h3 class="mb-5">學歷</h3>
-        <div class="col">
+      <div class="home-education row text-center my-3">
+        <h3 class="col-12 mb-5">學歷</h3>
+        <div class="col-12 col-sm-6">
           <h3>日本經濟大學</h3>
           <span>經營學科</span>&nbsp
           <span>大學畢業</span>
         </div>
-        <div class="col">
+        <div class="col-12 col-sm-6">
           <h3>福岡第一高等學校</h3>
           <span>普通科</span>&nbsp
           <span>高中畢業</span>
         </div>
       </div>
-      <div class="home-work-experience row-cols-sm-1 text-center my-3">
-        <h3 class="mb-5">工作經歷</h3>
-        <div class="col">
+      <div class="home-work-experience row text-center my-3">
+        <h3 class="col-12 mb-5">工作經歷</h3>
+        <div class="col-12 col-sm-4">
           <h3>電子零件製造商</h3>
           <span>職位：業務</span>
         </div>
-        <div class="col">
+        <div class="col-12 col-sm-4">
           <h3>電子零件製造商</h3>
           <span>職位：業務經理</span>
         </div>
-        <div class="col">
+        <div class="col-12 col-sm-4">
           <h3>自動化公司</h3>
           <span>職位：採購</span>
         </div>
@@ -156,9 +156,9 @@ box-icon {
   padding: 0;
 }
 
-.home-education .col:not(:last-child),
-.home-work-experience .col:not(:last-child) {
-  margin-bottom: 30px;
+.home-education .col-12:not(:last-child),
+.home-work-experience .col-12:not(:last-child) {
+  margin-bottom: 50px;
 }
 
 .home-skill h3 {

@@ -10,38 +10,16 @@ export default {
     sideBar,
     card,
   },
-  data() {
-    return {
-      openClose: true,
-    };
-  },
-  computed: {
-    sideBarGrid() {
-      return this.openClose ? "2 / -1" : "3 / -1";
-    },
-  },
-  methods: {
-    showSideBar() {
-      this.openClose = !this.openClose;
-    },
-  },
 };
 </script>
 
 <template>
-  <header class="header">
-    <sideBar
-      :openClose="openClose"
-      :showSideBar="showSideBar"
-    />
-  </header>
-
-  <main
-    class="main"
-    :style="{ gridColumn: sideBarGrid }"
-  >
-    <router-view />
-  </main>
+  <div class="text-light">
+    <sideBar />
+    <main class="main d-flex justify-content-center pt-5 mt-5">
+      <router-view class="view-container" />
+    </main>
+  </div>
 </template>
 
 <style>
@@ -63,28 +41,16 @@ body {
   color: white;
 }
 
-#app {
-  height: 100vh;
+.view-container {
+  width: 100vw;
+  height: 89vh;
   display: grid;
-  grid-template-columns: 5% 15% 5fr;
-  grid-template-rows: 5fr 0.5fr;
-}
-
-.header {
-  grid-column: 1 / 3;
-  grid-row: 1 / -1;
-}
-
-.main {
-  grid-row: 1 / -1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  place-items: center;
 }
 
 button {
   border: none;
-  background: linear-gradient(90deg, #4040bf, #9540bf);
+  background: linear-gradient(180deg, #4040bf, #9540bf);
   padding: 12px 18px;
   border-radius: 4px;
   color: white;
@@ -93,8 +59,13 @@ button {
 }
 
 button:hover,
-button:focus {
+button:focus,
+button:active {
   outline: none;
   box-shadow: 0 0 0 2px #fff, 0 0 0 4px #4c49ea;
+}
+
+box-icon {
+  fill: #fff;
 }
 </style>

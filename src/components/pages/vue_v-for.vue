@@ -40,7 +40,7 @@ ul {
 
 li {
   line-height: 2em;
-  font-size: 28px;
+  font-size: 1em;
 }
 
 li input {

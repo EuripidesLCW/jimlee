@@ -21,28 +21,7 @@ export default {
 </script>
 
 <template>
-  <div class="about-container">
-    <div class="about-header-box">
-      <div class="about-img-name">
-        <img
-          src="../assets/LEE.jpg"
-          alt=""
-        />
-        <h1>Jim Lee</h1>
-        <h3>lee82511p@outlook.com</h3>
-      </div>
-      <div class="about-skill">
-        <h1>前端技能</h1>
-        <h3>
-          HTML、CSS、JavaScript、Bootstrap、Vue.js、React.js、jQuery、AJAX
-        </h3>
-        <h1>前端技能</h1>
-        <h3>PHP、Laravel、Node.js、Restful API、MariaDB / MySQL</h3>
-        <h1>其他技能</h1>
-        <h3>Git / Git Hub / Git Lab、Photoshop、Illustrator、Figma</h3>
-      </div>
-    </div>
-
+  <div class="container">
     <div class="about-content">
       <div class="about-text-box">
         <div class="about-text-fnSize">
@@ -73,39 +52,6 @@ export default {
 </template>
 
 <style scoped>
-.about-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 5%;
-}
-
-.about-header-box {
-  display: flex;
-  justify-content: center;
-  height: 300px;
-}
-
-.about-img-name {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  margin-right: 30px;
-}
-
-.about-img-name > img {
-  width: auto;
-  height: 200px;
-  border-radius: 10%;
-}
-
-.about-skill {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-}
-
 .about-text-fnSize {
   display: flex;
   justify-content: space-between;
@@ -114,7 +60,7 @@ export default {
 }
 
 .about-text-fnSize button {
-  margin-left: 5px;
+  margin-left: 10px;
   cursor: pointer;
 }
 
@@ -133,7 +79,6 @@ export default {
 .about-text-box {
   display: flex;
   flex-direction: column;
-  height: 500px;
-  margin-top: 20px;
+  height: 89vh;
 }
 </style>

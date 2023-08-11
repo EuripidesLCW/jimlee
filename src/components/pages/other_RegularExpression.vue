@@ -1,16 +1,3 @@
-<template>
-  <div class="container">
-    <div
-      class="row"
-      v-for="tag in tags"
-      :key="tag.name"
-    >
-      <div class="columnName">{{ tag.name }}</div>
-      <div class="columnDescription">{{ tag.description }}</div>
-    </div>
-  </div>
-</template>
-
 <script>
 export default {
   data() {
@@ -74,25 +61,49 @@ export default {
 };
 </script>
 
+<template>
+  <div class="container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>模式</th>
+          <th>描述</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          v-for="tag in tags"
+          :key="tag.name"
+        >
+          <td>{{ tag.name }}</td>
+          <td>{{ tag.description }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</template>
+
 <style scoped>
 .container {
-  display: flex;
-  flex-direction: column;
+  margin: 20px;
   font-size: 1.5rem;
 }
 
-.row {
-  display: flex;
-  justify-content: space-between;
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+}
+
+.table th,
+.table td {
+  border: 1px solid #ccc;
   padding: 8px;
-  border-bottom: 1px solid #ccc;
 }
 
-.columnName {
-  flex: 1;
-}
-
-.columnDescription {
-  flex: 2;
+.table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+  text-align: left;
 }
 </style>

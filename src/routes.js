@@ -2,10 +2,15 @@ import { createRouter, createWebHashHistory } from "vue-router";
 
 import card from "./components/card.vue";
 import about from "./components/about.vue";
+import home from "./components/home.vue";
 
 const routes = [
   {
     path: "/",
+    component: home,
+  },
+  {
+    path: "/about",
     component: about,
   },
   {
@@ -53,17 +58,18 @@ const routes = [
 const router = createRouter({
   history: createWebHashHistory(),
   routes: routes,
-  // scrollBehavior(to, from, savedPosition) {
-  //   if (savedPosition) {
-  //     return savedPosition;
-  //   } else {
-  //     return {
-  //       top: 0,
-  //     };
-  //   }
-  // },
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition;
+    } else {
+      return {
+        top: 0,
+      };
+    }
+  },
 });
 
+//這動態路由在build後沒辦法work
 // const pageComponents = import.meta.glob("./components/pages/*.vue");
 
 // Object.keys(pageComponents).forEach((file) => {

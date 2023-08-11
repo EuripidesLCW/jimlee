@@ -35,6 +35,8 @@ export default {
         type="text"
         v-model="username"
       />
+      <p>您輸入的帳號：{{ username }}</p>
+
       <button
         @mousedown="showPwd"
         @mouseup="hidePwd"
@@ -47,33 +49,34 @@ export default {
         type="password"
         v-model="password"
       />
+      <p>您輸入的密碼：{{ displayedPassword }}</p>
+
       <label for="tel">手機</label>
       <input
         id="tel"
         type="tel"
         v-model="tel"
       />
+      <p>您輸入的手機：{{ tel }}</p>
+
       <label for="email">信箱</label>
       <input
         id="email"
         type="email"
         v-model="email"
       />
+      <p>您輸入的信箱：{{ email }}</p>
     </div>
     <button @click="clearInput">清除輸入</button>
-    <div class="show-box">
-      <p>帳號：{{ username }}</p>
-      <p>密碼：{{ displayedPassword }}</p>
-      <p>手機：{{ tel }}</p>
-      <p>信箱：{{ email }}</p>
-    </div>
+    <div class="show-box"></div>
   </div>
 </template>
 
 <style scoped>
 .container {
   display: flex;
-  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .input-box {
@@ -81,27 +84,15 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  height: 300px;
   width: auto;
   margin-right: 10px;
-}
-
-.show-box {
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  justify-content: space-around;
-  margin-left: 10px;
-  width: 300px;
 }
 
 .input-box button {
   margin: 10px 0;
 }
 
-input,
-.input-box,
-.show-box {
+input {
   padding: 8px 14px;
   border: 1px solid hsl(280deg, 50%, 50%);
   border-radius: 4px;

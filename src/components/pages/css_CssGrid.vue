@@ -28,23 +28,31 @@ export default {
 </script>
 
 <template>
-  <h1>Css Grid</h1>
   <div class="container">
-    <div class="text">
-      <div>
-        <h3>外圈</h3>
-        <p>
-          display: grid;<br />
-          gap: 10px;<br />
-          grid-template-columns: repeat(4, 1fr);<br />
-          grid-template-rows: repeat(4, 1fr);
-        </p>
-      </div>
-      <div v-for="style in cssStyle">
-        <h3>{{ style.title }}</h3>
-        <p>{{ style.col }}<br />{{ style.row }}</p>
-      </div>
-    </div>
+    <table class="text">
+      <tbody>
+        <tr
+          v-for="style in cssStyle"
+          :key="style.title"
+        >
+          <td>
+            <h3>{{ style.title }}</h3>
+          </td>
+          <td>
+            <p>{{ style.col }}<br />{{ style.row }}</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <h3>外圈</h3>
+            <p>
+              display: grid;<br />gap: 10px;<br />grid-template-columns:
+              repeat(4, 1fr);<br />grid-template-rows: repeat(4, 1fr);
+            </p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
     <div class="flex-container">
       <div class="flex-item1">1</div>
       <div class="flex-item2">2</div>
@@ -57,6 +65,39 @@ export default {
 </template>
 
 <style scoped>
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.text {
+  margin: 20px 0;
+}
+
+.text table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.text th,
+.text td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.text h3 {
+  color: salmon;
+  margin: 0;
+}
+
+.text p {
+  margin: 0;
+}
+
 .flex-container {
   width: 500px;
   height: 500px;
@@ -70,72 +111,37 @@ export default {
   margin-left: 50px;
 }
 
-.flex-item1 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 2px solid salmon;
-  grid-column: 1 / -1;
-  grid-row: 1 / 2;
-}
-
-.flex-item2 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 2px solid salmon;
-  grid-column: 1 / 2;
-  grid-row: 2 / -1;
-}
-
-.flex-item3 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 2px solid salmon;
-  grid-column: 2;
-  grid-row: 2 / 3;
-}
-
-.flex-item4 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 2px solid salmon;
-  grid-column: 3;
-  grid-row: 2 / 3;
-}
-
-.flex-item5 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 2px solid salmon;
-  grid-column: 4;
-  grid-row: 2 / 3;
-}
-
+.flex-item1,
+.flex-item2,
+.flex-item3,
+.flex-item4,
+.flex-item5,
 .flex-item6 {
   display: flex;
   justify-content: center;
   align-items: center;
   border: 2px solid salmon;
+}
+
+.flex-item1 {
+  grid-column: 1 / -1;
+  grid-row: 1 / 2;
+}
+
+.flex-item2 {
+  grid-column: 1 / 2;
+  grid-row: 2 / -1;
+}
+
+.flex-item3,
+.flex-item4,
+.flex-item5 {
+  grid-column: span 1;
+  grid-row: 2 / 3;
+}
+
+.flex-item6 {
   grid-column: 2 / -1;
   grid-row: 3 / -1;
-}
-
-.container {
-  display: flex;
-  align-items: center;
-}
-
-.text,
-.text > div {
-  font-size: 20px;
-  margin: 20px 0;
-}
-
-.text h3 {
-  color: salmon;
 }
 </style>

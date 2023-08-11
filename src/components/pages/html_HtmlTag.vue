@@ -76,41 +76,48 @@ export default {
 
 <template>
   <div class="container">
-    <div
-      class="row"
-      v-for="tag in tags"
-      :key="tag.name"
-    >
-      <div class="columnName">{{ tag.name }}</div>
-      <div class="columnExample">{{ tag.example }}</div>
-      <div class="columnDescription">{{ tag.description }}</div>
-    </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>標籤</th>
+          <th>範例</th>
+          <th>描述</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          v-for="tag in tags"
+          :key="tag.name"
+        >
+          <td>{{ tag.name }}</td>
+          <td v-html="tag.example"></td>
+          <td>{{ tag.description }}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
 <style scoped>
 .container {
-  display: flex;
-  flex-direction: column;
+  margin: 20px;
 }
 
-.row {
-  display: flex;
-  justify-content: space-between;
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+}
+
+.table th,
+.table td {
+  border: 1px solid #ccc;
   padding: 8px;
-  border-bottom: 1px solid #ccc;
-  font-size: 1.5rem;
 }
 
-.columnName {
-  flex: 1;
-}
-
-.columnExample {
-  flex: 2;
-}
-
-.columnDescription {
-  flex: 2;
+.table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+  text-align: left;
 }
 </style>

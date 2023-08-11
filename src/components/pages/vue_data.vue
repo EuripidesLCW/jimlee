@@ -28,6 +28,6 @@ div > * {
 }
 
 div > p {
-  font-size: 1.5rem;
+  font-size: 1em;
 }
 </style>

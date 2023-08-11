@@ -2,14 +2,18 @@
 import { RouterLink } from "vue-router";
 
 export default {
-  props: ["openClose", "showSideBar"],
   data() {
     return {
       navLinks: [
         {
+          icon: "<box-icon size='md' name='home' flip='horizontal' ></box-icon>",
+          name: "首頁",
+          link: "",
+        },
+        {
           icon: "<box-icon size='md' name='user' ></box-icon>",
           name: "關於我",
-          link: "",
+          link: "about",
         },
         {
           icon: "<box-icon size='md' name='code-alt'></box-icon>",
@@ -20,27 +24,6 @@ export default {
     };
   },
   computed: {
-    imageHeight() {
-      return this.openClose ? "80px" : "200px";
-    },
-    sideBarShow() {
-      return this.openClose ? "5%" : "20%";
-    },
-    closeIcon() {
-      return this.openClose ? "center" : "";
-    },
-    liMargin() {
-      return this.openClose ? "50%" : "10%";
-    },
-    sideBarButton() {
-      const transformValue = this.openClose ? "" : "rotate(-180deg)";
-      return {
-        transform: transformValue,
-      };
-    },
-    imageTextMaginTop() {
-      return this.openClose ? "50%" : "10%";
-    },
     hasContent() {
       return this.$route.path.startsWith("/card/");
     },
@@ -55,180 +38,123 @@ export default {
 </script>
 
 <template>
-  <div
-    class="sidebar"
-    :style="{ width: sideBarShow }"
-  >
-    <div
-      class="image-text"
-      :style="{ marginTop: imageTextMaginTop }"
-    >
-      <img
-        :style="{ height: imageHeight }"
-        src="../assets/LEE.jpg"
-        alt=""
-      />
-      <div v-show="!openClose">
-        <h1>Jim Lee</h1>
-        <h3>lee82511p@outlook.com</h3>
+  <nav class="navbar navbar-light fixed-top">
+    <div class="container-fluid">
+      <a
+        class="navbar-brand"
+        href="#"
+        ><img
+          class="img-fluid"
+          ap
+          src="../assets/LEE.jpg"
+          alt=""
+        />
+      </a>
+      <div class="me-auto">
+        <h3>Jim Lee</h3>
+        <h6>lee82511p@outlook.com</h6>
+      </div>
+      <button
+        v-show="hasContent"
+        @click="goBack"
+        class="btn text-light position-absolute top-100 end-0 mt-3 p-3"
+      >
+        <box-icon
+          name="redo"
+          flip="horizontal"
+        ></box-icon>
+        返回
+      </button>
+
+      <button
+        class="navbar-toggler me-3"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasNavbar"
+        aria-controls="offcanvasNavbar"
+      >
+        <box-icon
+          name="left-indent"
+          flip="horizontal"
+        ></box-icon>
+      </button>
+      <div
+        class="offcanvas offcanvas-start"
+        tabindex="-1"
+        id="offcanvasNavbar"
+        aria-labelledby="offcanvasNavbarLabel"
+      >
+        <div class="offcanvas-header text-light">
+          <img
+            src="../assets/LEE.jpg"
+            alt=""
+          />
+          <div>
+            <h1>Jim Lee</h1>
+            <h5>lee82511p@outlook.com</h5>
+          </div>
+          <button
+            type="button"
+            class="btn-close btn-close-white text-reset"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav mt-2">
+            <li
+              class="nav-item mt-2"
+              data-bs-dismiss="offcanvas"
+              v-for="navLink in navLinks"
+            >
+              <router-link
+                :to="'/' + navLink.link"
+                class="nav-link d-flex align-items-center fs-2"
+              >
+                <span
+                  class="d-flex align-items-center me-2"
+                  v-html="navLink.icon"
+                ></span>
+                <span class="text-light">{{ navLink.name }}</span>
+              </router-link>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
-
-    <div class="menu-bar">
-      <ul class="menu-links">
-        <li
-          :style="{ marginTop: liMargin }"
-          class="nav-link"
-          v-for="navLink in navLinks"
-        >
-          <router-link
-            :to="'/' + navLink.link"
-            :style="{ justifyContent: closeIcon }"
-          >
-            <div class="nav-link-bg"></div>
-            <span
-              class="linkicon"
-              v-html="navLink.icon"
-              @click="iconClickShow"
-            ></span>
-            <span
-              class="linktext"
-              v-show="!openClose"
-              >{{ navLink.name }}</span
-            >
-          </router-link>
-        </li>
-      </ul>
-    </div>
-    <button
-      class="goBackButton"
-      v-if="hasContent"
-      @click="goBack"
-    >
-      返回
-    </button>
-    <button
-      class="sideBarBtn"
-      :style="sideBarButton"
-      @click="showSideBar"
-    >
-      <box-icon
-        name="chevrons-right"
-        type="solid"
-        color="#ffffff"
-        size="md"
-      ></box-icon>
-    </button>
-  </div>
+  </nav>
 </template>
 
-<style>
-.sidebar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  background-color: #4040bf80;
-  overflow: hidden;
+<style scoped>
+.navbar {
+  background-color: rgba(64, 64, 191, 0.8);
 }
 
-.image-text {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 10%;
-  text-align: center;
+#offcanvasNavbar {
+  background-color: rgba(64, 64, 191, 1);
 }
 
-.image-text img {
-  width: auto;
-  border-radius: 10%;
-}
-
-.image-text div {
-  margin-top: 10%;
-}
-
-.menu-bar {
-  display: flex;
-  flex-direction: column;
-  margin-top: 5%;
-}
-
-box-icon {
-  fill: #fff;
-}
-
-.menu-links {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding: 0;
-  margin: 0;
-}
-
-.menu-links .nav-link {
-  display: flex;
-  align-items: center;
-  margin-top: 10%;
-}
-
-.nav-link:hover .nav-link-bg {
-  background-color: #9540bf;
-  transform: scalex(20);
-}
-
-.nav-link-bg {
-  height: 50px;
+.navbar-brand img {
   width: 50px;
-  background-color: #fff;
-  position: absolute;
-  left: -200px;
-  z-index: -1;
+  aspect-ratio: 2/2;
+  border-radius: 100%;
+  object-fit: cover;
+}
+
+.offcanvas-header img {
+  width: 100px;
+  aspect-ratio: 2/2;
+  border-radius: 100%;
+  object-fit: cover;
+}
+
+ul li a span:nth-child(2) {
+  letter-spacing: 1rem;
+}
+
+.navbar-nav li a:hover,
+.navbar-nav li a:active {
+  background-color: #9540bf;
   transition: all 0.5s ease;
-}
-
-.linkicon {
-  display: flex;
-  align-items: center;
-}
-
-.menu-links a {
-  text-decoration: none;
-  color: #fff;
-  font-size: 2rem;
-  font-weight: bold;
-  width: 100%;
-  display: flex;
-  align-items: center;
-}
-
-.linktext {
-  letter-spacing: 10px;
-}
-
-.sideBarBtn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 5.2rem;
-  margin-top: 10%;
-  position: absolute;
-  bottom: 0;
-}
-
-.goBackButton {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 5.2rem;
-  margin-top: 10%;
-  position: absolute;
-  bottom: 10%;
 }
 </style>

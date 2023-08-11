@@ -23,6 +23,6 @@ export default {
 <style scoped>
 div > p,
 div > a {
-  font-size: 1.5rem;
+  font-size: 1em;
 }
 </style>

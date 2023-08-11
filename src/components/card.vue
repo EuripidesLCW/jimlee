@@ -77,68 +77,66 @@ export default {
 </script>
 
 <template>
-  <div class="card-container">
-    <div class="type-box">
-      <button
-        v-for="buttonType in buttonTypes"
-        :key="buttonType"
-        class="button-box"
-        @click="filterCardsByType(buttonType.type)"
-      >
-        <box-icon
-          size="lg"
-          :type="buttonType.typeicon"
-          :name="buttonType.iconName"
-        ></box-icon
-        >{{ buttonType.type }}
-      </button>
-    </div>
-    <div class="card-box">
-      <div
-        class="card-item"
-        v-for="card in filteredCards"
-        :key="card.id"
-      >
-        <router-link
-          :to="`/card/${card.type}/${card.titleWithoutSpaces}`"
-          class="card-item-link"
+  <div class="container">
+    <div class="row">
+      <div class="col-12 d-flex flex-wrap justify-content-center">
+        <button
+          v-for="buttonType in buttonTypes"
+          :key="buttonType"
+          class="d-flex justify-content-center align-items-center mx-1 mb-2"
+          @click="filterCardsByType(buttonType.type)"
+        >
+          <box-icon
+            size="lg"
+            :type="buttonType.typeicon"
+            :name="buttonType.iconName"
+            class="me-2"
+          ></box-icon
+          >{{ buttonType.type }}
+        </button>
+      </div>
+      <div class="col-12">
+        <div
+          class="d-flex flex-wrap justify-content-center align-items-start mt-3"
         >
           <div
-            class="card-item-link-bg"
-            :style="{ backgroundColor: getBackgroundColor(card.type) }"
-          ></div>
+            class="card-item"
+            v-for="card in filteredCards"
+            :key="card.id"
+          >
+            <router-link
+              :to="`/card/${card.type}/${card.titleWithoutSpaces}`"
+              class="card-item-link"
+            >
+              <div
+                class="card-item-link-bg"
+                :style="{ backgroundColor: getBackgroundColor(card.type) }"
+              ></div>
 
-          <div class="card-item-title">
-            {{ card.title }}
-          </div>
+              <div class="card-item-title">
+                {{ card.title }}
+              </div>
 
-          <div class="card-item-data-box">
-            date:
-            <span class="card-item-data-box-date"> {{ card.date }} </span>
+              <div class="card-item-data-box">
+                date:
+                <span class="card-item-data-box-date"> {{ card.date }} </span>
+              </div>
+            </router-link>
           </div>
-        </router-link>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-.card-container {
-  width: 1000px;
-  margin: 0 auto;
-}
-.card-box {
-  display: flex;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  padding: 50px 0;
-}
 .card-item {
-  flex-basis: 30%;
+  width: 250px;
   margin: 0 15px 30px;
   overflow: hidden;
   border-radius: 28px;
 }
+
 .card-item-link {
   display: block;
   padding: 30px 20px;
@@ -148,14 +146,17 @@ export default {
   height: 200px;
   text-decoration: none;
 }
+
 .card-item-link:hover,
 .card-item-link:hover .card-item-data-box-date {
   text-decoration: none;
   color: #fff;
 }
+
 .card-item-link:hover .card-item-link-bg {
   transform: scale(10);
 }
+
 .card-item-title {
   min-height: 87px;
   margin: 0 0 25px;
@@ -166,17 +167,20 @@ export default {
   z-index: 2;
   position: relative;
 }
+
 .card-item-data-box {
   font-size: 18px;
   color: #fff;
   z-index: 2;
   position: relative;
 }
+
 .card-item-data-box-date {
   font-weight: bold;
   color: #f9b234;
   transition: color 0.5s ease;
 }
+
 .card-item-link-bg {
   height: 128px;
   width: 128px;
@@ -197,11 +201,7 @@ export default {
   margin-top: 10%;
 }
 
-.button-box {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
+.row > .col-12 button {
+  width: 150px;
 }
 </style>

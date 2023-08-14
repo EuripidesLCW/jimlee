@@ -4,7 +4,7 @@ export default {
     return {
       username: "",
       password: "",
-      displayedPassword: "",
+      showPassword: false,
       tel: "",
       email: "",
     };
@@ -16,11 +16,8 @@ export default {
       this.tel = "";
       this.email = "";
     },
-    showPwd() {
-      this.displayedPassword = this.password;
-    },
-    hidePwd() {
-      this.displayedPassword = "";
+    showhidepwd() {
+      this.showPassword = !this.showPassword;
     },
   },
 };
@@ -37,11 +34,8 @@ export default {
       />
       <p>您輸入的帳號：{{ username }}</p>
 
-      <button
-        @mousedown="showPwd"
-        @mouseup="hidePwd"
-      >
-        顯示密碼
+      <button @click="showhidepwd">
+        {{ showPassword ? "隱藏密碼" : "顯示密碼" }}
       </button>
       <label for="password">密碼</label>
       <input
@@ -49,7 +43,7 @@ export default {
         type="password"
         v-model="password"
       />
-      <p>您輸入的密碼：{{ displayedPassword }}</p>
+      <p>您輸入的密碼：{{ showPassword ? password : "" }}</p>
 
       <label for="tel">手機</label>
       <input

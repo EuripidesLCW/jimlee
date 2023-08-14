@@ -16,7 +16,7 @@ export default {
 <template>
   <div class="text-light">
     <sideBar />
-    <main class="main d-flex justify-content-center pt-5 mt-5">
+    <main class="main pt-5 mt-5">
       <router-view class="view-container" />
     </main>
   </div>

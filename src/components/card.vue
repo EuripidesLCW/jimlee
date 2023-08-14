@@ -2,7 +2,7 @@
 export default {
   data() {
     return {
-      buttonTypes: [
+      buttons: [
         { type: "All", typeicon: "", iconName: "grid-alt" },
         { type: "Html", typeicon: "logo", iconName: "html5" },
         { type: "Css", typeicon: "logo", iconName: "css3" },
@@ -11,19 +11,27 @@ export default {
         { type: "Other", typeicon: "", iconName: "code-alt" },
       ],
       cards: [
-        { id: 1, type: "vue", title: "Word Count", date: "2023-07-29" },
-        { id: 2, type: "html", title: "Html Tag", date: "2023-07-30" },
+        // { id: 1, type: "vue", title: "Word Count", date: "2023-07-29" },
+        // { id: 2, type: "html", title: "Html Tag", date: "2023-07-30" },
+        // {
+        //   id: 3,
+        //   type: "other",
+        //   title: "Regular Expression",
+        //   date: "2023-08-01",
+        // },
+        // { id: 4, type: "css", title: "Css Grid", date: "2023-08-02" },
+        // { id: 5, type: "vue", title: "Data", date: "2023-08-03" },
+        // { id: 6, type: "vue", title: "v-bind", date: "2023-08-03" },
+        // { id: 7, type: "vue", title: "v-for", date: "2023-08-04" },
+        { id: 8, type: "vue", title: "v-model", date: "2023-08-07" },
+        { id: 9, type: "vue", title: "Expanding Cards", date: "2023-08-08" },
+        { id: 10, type: "vue", title: "Progress Steps", date: "2023-08-09" },
         {
-          id: 3,
-          type: "other",
-          title: "Regular Expression",
-          date: "2023-08-01",
+          id: 10,
+          type: "vue",
+          title: "Rotating Navigation",
+          date: "2023-08-10",
         },
-        { id: 4, type: "css", title: "Css Grid", date: "2023-08-02" },
-        { id: 5, type: "vue", title: "Data", date: "2023-08-03" },
-        { id: 6, type: "vue", title: "v-bind", date: "2023-08-03" },
-        { id: 7, type: "vue", title: "v-for", date: "2023-08-04" },
-        { id: 8, type: "vue", title: "v-model", date: "2023-08-05" },
       ],
       selectedType: "",
     };
@@ -32,7 +40,7 @@ export default {
     processedCards() {
       return this.cards.map((card) => ({
         ...card,
-        // 正則表達 /.../
+        // 正則表達式
         // \s 表示匹配任何空白字符，包括空格、換行符號、製表符等
         // + 表示匹配前面的模式（即 \s）一次或多次，也就是連續的空白字符
         // g 是正則表達式的修飾符，代表全局匹配，意味著不只匹配第一個符合的地方，而是會一直往後尋找所有符合的地方
@@ -58,7 +66,7 @@ export default {
         return "#e44002";
       } else if (type === "css") {
         return "#4c49ea";
-      } else if (type === "javascript") {
+      } else if (type === "js") {
         return "#f9b234";
       } else if (type === "vue") {
         return "#008744";
@@ -81,18 +89,18 @@ export default {
     <div class="row">
       <div class="col-12 d-flex flex-wrap justify-content-center">
         <button
-          v-for="buttonType in buttonTypes"
-          :key="buttonType"
+          v-for="button in buttons"
+          :key="button"
           class="d-flex justify-content-center align-items-center mx-1 mb-2"
-          @click="filterCardsByType(buttonType.type)"
+          @click="filterCardsByType(button.type)"
         >
           <box-icon
             size="lg"
-            :type="buttonType.typeicon"
-            :name="buttonType.iconName"
+            :type="button.typeicon"
+            :name="button.iconName"
             class="me-2"
           ></box-icon
-          >{{ buttonType.type }}
+          >{{ button.type }}
         </button>
       </div>
       <div class="col-12">
@@ -203,5 +211,9 @@ export default {
 
 .row > .col-12 button {
   width: 150px;
+}
+
+:disabled {
+  cursor: not-allowed;
 }
 </style>

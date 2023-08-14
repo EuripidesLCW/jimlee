@@ -50,6 +50,18 @@ const routes = [
     component: () => import("./components/pages/vue_v-model.vue"),
   },
   {
+    path: "/card/vue/ExpandingCards",
+    component: () => import("./components/pages/vue_ExpandingCards.vue"),
+  },
+  {
+    path: "/card/vue/ProgressSteps",
+    component: () => import("./components/pages/vue_ProgressSteps.vue"),
+  },
+  {
+    path: "/card/vue/RotatingNavigation",
+    component: () => import("./components/pages/vue_RotatingNavigation.vue"),
+  },
+  {
     path: "/:catchAll(.*)",
     component: () => import("./components/notfound.vue"),
   },

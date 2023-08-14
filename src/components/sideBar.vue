@@ -17,7 +17,7 @@ export default {
         },
         {
           icon: "<box-icon size='md' name='code-alt'></box-icon>",
-          name: "筆記區",
+          name: "作品集",
           link: "card",
         },
       ],

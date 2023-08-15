@@ -103,7 +103,7 @@ export default {
         <div class="offcanvas-body">
           <ul class="navbar-nav mt-2">
             <li
-              class="nav-item mt-2"
+              class="nav-item ms-5 ps-4 mt-3"
               data-bs-dismiss="offcanvas"
               v-for="navLink in navLinks"
             >
@@ -152,9 +152,20 @@ ul li a span:nth-child(2) {
   letter-spacing: 1rem;
 }
 
-.navbar-nav li a:hover,
-.navbar-nav li a:active {
+.navbar-nav li a::before {
+  content: "";
+  height: 50px;
+  width: 10px;
   background-color: #9540bf;
-  transition: all 0.5s ease;
+  transform-origin: left center;
+  transform: scaleX(1);
+  transition: transform 0.4s linear;
+  position: relative;
+  z-index: -1;
+}
+
+.navbar-nav li a:hover::before,
+.navbar-nav li a:focus::before {
+  transform: scaleX(20);
 }
 </style>

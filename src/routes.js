@@ -62,6 +62,18 @@ const routes = [
     component: () => import("./components/pages/vue_RotatingNavigation.vue"),
   },
   {
+    path: "/card/vue/HiddenSearch",
+    component: () => import("./components/pages/vue_HiddenSearch.vue"),
+  },
+  {
+    path: "/card/vue/BlurryLoading",
+    component: () => import("./components/pages/vue_BlurryLoading.vue"),
+  },
+  {
+    path: "/card/vue/ScrollAnimation",
+    component: () => import("./components/pages/vue_ScrollAnimation.vue"),
+  },
+  {
     path: "/:catchAll(.*)",
     component: () => import("./components/notfound.vue"),
   },

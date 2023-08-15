@@ -27,10 +27,28 @@ export default {
         { id: 9, type: "vue", title: "Expanding Cards", date: "2023-08-08" },
         { id: 10, type: "vue", title: "Progress Steps", date: "2023-08-09" },
         {
-          id: 10,
+          id: 11,
           type: "vue",
           title: "Rotating Navigation",
           date: "2023-08-10",
+        },
+        {
+          id: 12,
+          type: "vue",
+          title: "Hidden Search",
+          date: "2023-08-11",
+        },
+        {
+          id: 13,
+          type: "vue",
+          title: "Blurry Loading",
+          date: "2023-08-14",
+        },
+        {
+          id: 14,
+          type: "vue",
+          title: "Scroll Animation",
+          date: "2023-08-15",
         },
       ],
       selectedType: "",
@@ -80,6 +98,14 @@ export default {
         this.selectedType = "";
       }
     },
+    btnDisable(btntype) {
+      if (btntype === "All") {
+        return false;
+      }
+      return !this.cards.some((card) =>
+        card.type.includes(btntype.toLowerCase())
+      );
+    },
   },
 };
 </script>
@@ -93,6 +119,7 @@ export default {
           :key="button"
           class="d-flex justify-content-center align-items-center mx-1 mb-2"
           @click="filterCardsByType(button.type)"
+          :disabled="btnDisable(button.type)"
         >
           <box-icon
             size="lg"
@@ -215,5 +242,7 @@ export default {
 
 :disabled {
   cursor: not-allowed;
+  background: darkgray;
+  box-shadow: none;
 }
 </style>

@@ -50,6 +50,12 @@ export default {
           title: "Scroll Animation",
           date: "2023-08-15",
         },
+        {
+          id: 15,
+          type: "vue",
+          title: "Split Landing Page",
+          date: "2023-08-16",
+        },
       ],
       selectedType: "",
     };

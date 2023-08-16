@@ -74,6 +74,10 @@ const routes = [
     component: () => import("./components/pages/vue_ScrollAnimation.vue"),
   },
   {
+    path: "/card/vue/SplitLandingPage",
+    component: () => import("./components/pages/veu_SplitLandingPage.vue"),
+  },
+  {
     path: "/:catchAll(.*)",
     component: () => import("./components/notfound.vue"),
   },

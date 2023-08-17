@@ -78,6 +78,10 @@ const routes = [
     component: () => import("./components/pages/veu_SplitLandingPage.vue"),
   },
   {
+    path: "/card/vue/FormInputWave",
+    component: () => import("./components/pages/vue_FormInputWave.vue"),
+  },
+  {
     path: "/:catchAll(.*)",
     component: () => import("./components/notfound.vue"),
   },

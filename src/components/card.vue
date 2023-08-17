@@ -56,6 +56,12 @@ export default {
           title: "Split Landing Page",
           date: "2023-08-16",
         },
+        {
+          id: 16,
+          type: "vue",
+          title: "Form Input Wave",
+          date: "2023-08-17",
+        },
       ],
       selectedType: "",
     };
